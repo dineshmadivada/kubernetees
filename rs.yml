@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-rs
+spec:
+        replicas: 4
+        selector:
+          matchLabels:
+                name: applogin
+        template:        
+          metadata:
+            name: my-httpd
+            labels:
+                  name: applogin
+          spec:
+            containers:
+            - name: nginx-test
+              image: httpd
+              ports:
+              - containerPort: 80
